@@ -1,0 +1,17 @@
+{
+   "name": "PennPolls",
+   "repository": "github.com/nflethana/pennpolls",
+   "description": "Polling website",
+   "version": "0.0.1",
+   "scripts": {
+     "start": "node app.js"
+   },
+   "dependencies": {
+      "express": "3.3.8",
+      "aws-sdk": "*",
+      "ejs": "*",
+      "async": "*",
+      "crypto-js": "*",
+      "node-uuid": "*"
+   }
+}
