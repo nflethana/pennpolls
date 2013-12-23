@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PennPolls</title>
+
+    <!-- Import bootstrap base -->
+    <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css">
+    <!-- Custom styles for this template -->
+    <link href="/css/base.css"
+    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/poll.css" rel="stylesheet">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      
+      window.onload = function() {
+        console.log("Page has been loaded!");
+      };
+    </script>
+  </head>
+
+<body>
+  <%if (message != null) { %>
+  <font color="red"><%= message %></font>
+  <% } %>
+
+  <h1>Sign In</h1>
+
+  <form action="/checklogin" method="post">
+    Enter Username Here: <input type="text" name="username"><br>
+    Enter Password Here: <input type="password" name = "password">
+    <input type="submit" value="Login">
+  </form>
+
+  <a href="/signup">Need an account?</a>
+</body>
+
+<footer>
+</footer>
+</html>
