@@ -12,7 +12,7 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
-      
+
       window.onload = function() {
         console.log("Page has been loaded!");
       };
@@ -24,15 +24,24 @@
   <font color="red"><%= message %></font>
   <% } %>
 
-  <h1>Sign In</h1>
+  <h1>Welcome to PennPolls!</h1>
 
-  <form action="/checklogin" method="post">
-    Enter Username Here: <input type="text" name="username"><br>
-    Enter Password Here: <input type="password" name = "password">
-    <input type="submit" value="Login">
+  <h2>What is PennPolls?</h2>
+
+  <h2>Create an Account:</h2>
+  <form action="/createAccount" method="post">
+    Enter Your University of Pennsylvania Email Here: <input type="text" name="createAccountEmail"><br>
+    Enter Password Here: <input type="password" name = "password"><br>
+    <input type="submit" value="Create Account">
   </form>
 
-  <a href="/signup">Need an account?</a>
+  <h2>Sign In:</h2>
+  <form action="/signIn" method="post">
+    Enter Your University of Pennsylvania Email Here: <input type="text" name="signInEmail"><br>
+    Enter Password Here: <input type="password" name="password"><br>
+    <input type="submit" value="Log In">
+  </form>
+
 </body>
 
 <footer>

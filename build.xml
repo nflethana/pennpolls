@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="PennPolls" default="jar" basedir=".">
+  <target name="pack" description="Create an archive for submission">
+    <zip destfile="pennpolls.zip">
+      <zipfileset dir="." excludes="node_modules/**,pennpolls.zip"/>
+    </zip>
+  </target>
+</project>
