@@ -16,10 +16,11 @@ var connection;
 
 var getConnection = function() {
 	connection = db.createConnection({
-		host: process.env.RDS_HOSTNAME,
-		user: process.env.RDS_USERNAME,
-		password: process.env.RDS_PASSWORD,
-		port: process.env.RDS_PORT
+		host: "pennpollsinstance.chydgi2xklxy.us-east-1.rds.amazonaws.com;dbname=pennpolls",
+		user: "nflethana",
+		password: "nflethanaawsrds",
+		database: "pennpolls",
+		port: "3306"
 	});
 	connection.connect();
 };
@@ -37,12 +38,14 @@ var createPennPollsDatabase = function() {
 	connection.query(query);
 };
 
+// The users table was created via command line, so 
+// might be slightly different than below
 var createUsersTable = function() {
 	var query = "CREATE TABLE IF NOT EXISTS users" +
 		"id INT NOT NULL AUTO_INCREMENT, " +
 		"email VARCHAR(500) NOT NULL, " +
 		"password VARCHAR(1000) NOT NULL, " +
-		"school VARCHAR(100) NOT NULL, " +
+		"schools VARCHAR(100) NOT NULL, " +
 		"gradyear VARCHAR(4) NOT NULL, " +
 		"firstname VARCHAR(1000) NOT NULL, " +
 		"lastname VARCHAR(1000) NOT NULL, " +
@@ -55,10 +58,10 @@ var createUsersTable = function() {
 //====================================================
 
 var putUserInUsersTable = function(email, password, 
-	school, gradyear, firstname, lastname) {
+	schools, gradyear, firstname, lastname) {
 	var timestamp = new Date().getTime();
 	var hashedPassword = SHA3(password).toString();
-	var inserts = [email, hashedPassword, school, gradyear,
+	var inserts = [email, hashedPassword, schools, gradyear,
 		firstname, lastname, timestamp];
 	var query = "INSERT INTO pennpolls.users VALUES ?";
 

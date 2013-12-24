@@ -30,8 +30,16 @@
 
   <h2>Create an Account:</h2>
   <form action="/createAccount" method="post">
+    Enter First Name Here: <input type="text" name="firstname"><br>
+    Enter Last Name Here: <input type="text" name="lastname"><br>
     Enter Your University of Pennsylvania Email Here: <input type="text" name="createAccountEmail"><br>
-    Enter Password Here: <input type="password" name = "password"><br>
+    Enter Password Here: <input type="password" name = "createAccountPassword"><br>
+    Enter Graduation Year Here (YYYY): <input type="text" name="gradyear"><br>
+    <p>Choose the schools to which you belong at the University of Pennsylvania:</p>
+    <input type="checkbox" name="schools" value="engineering">Engineering<br>
+    <input type="checkbox" name="schools" value="college">The College<br>
+    <input type="checkbox" name="schools" value="wharton">Wharton<br>
+    <input type="checkbox" name="schools" value="nursing">Nursing<br><br>
     <input type="submit" value="Create Account">
   </form>
 
