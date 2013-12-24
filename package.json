@@ -12,6 +12,7 @@
       "ejs": "*",
       "async": "*",
       "crypto-js": "*",
-      "node-uuid": "*"
+      "node-uuid": "*",
+      "mysql": "*"
    }
 }

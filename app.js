@@ -22,18 +22,19 @@ app.configure(function(){
 
 app.engine('.html', require('ejs').__express);
 app.set('view engine', 'html');
+app.set('port', process.env.PORT || 8080);
 
 //====================================================
 //	Routes Setup
 //====================================================
 
 app.get('/', routes.getPennPolls);
+app.post('/createaccount', routes.postCreateAccount);
 
 // Examples from old code...
 // app.get('/', routes.get_login);
 // app.post('/checklogin', routes.post_checklogin);
 // app.get('/signup', routes.get_signup);
-// app.post('/createaccount', routes.post_createaccount);
 // app.get('/home/:user', routes.get_profile);
 // // app.post('/deletestatus', routes.post_deletestatus);
 // app.get('/edit/:profile', routes.get_editprofile);
@@ -44,5 +45,5 @@ app.get('/', routes.getPennPolls);
 //	Run the Server
 //====================================================
 
-app.listen(8080);
+app.listen(app.get('port'));
 console.log('Server on 8080 ===========================');
