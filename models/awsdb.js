@@ -16,9 +16,9 @@ var connection;
 
 var getConnection = function() {
 	connection = db.createConnection({
-		host: "pennpollsinstance.chydgi2xklxy.us-east-1.rds.amazonaws.com;dbname=pennpolls",
-		user: "nflethana",
-		password: "nflethanaawsrds",
+		host: "localhost",
+		user: "root",
+		password: "",
 		database: "pennpolls",
 		port: "3306"
 	});
@@ -58,19 +58,43 @@ var createUsersTable = function() {
 //====================================================
 
 var putUserInUsersTable = function(email, password, 
-	schools, gradyear, firstname, lastname) {
+	schools, gradyear, firstname, lastname, pennkey, phonenumber, route_callback) {
+	getConnection();
+
 	var timestamp = new Date().getTime();
 	var hashedPassword = SHA3(password).toString();
-	var inserts = [email, hashedPassword, schools, gradyear,
-		firstname, lastname, timestamp];
-	var query = "INSERT INTO pennpolls.users VALUES ?";
+	var inserts = {
+		email: email, 
+		password: hashedPassword, 
+		schools: schools.toString(), 
+		gradyear: gradyear,
+		firstname: firstname, 
+		lastname: lastname,
+		datecreated: timestamp,
+		pennkey: pennkey,
+		phonenumber: phonenumber
+	};
+	var query = "INSERT INTO pennpolls.users SET ?";
 
 	connection.query(query, inserts, function(err, result) {
 		if (err) console.log("Error inserting User into users table: " + err);
 		else {
-			console.log("it worked!");
+			var newData = {};
+			newData.success = true;
+			newData.email = email;
+			newData.password = hashedPassword;
+			newData.schools = schools;
+			newData.firstname = firstname;
+			newData.lastname = lastname;
+			newData.datecreated = timestamp;
+			newData.uid = result.insertId;
+			newData.pennkey = pennkey;
+			newData.phonenumber = phonenumber;
+			route_callback(false, newData);
 		}
 	});
+
+	closeConnection();
 };
 
 //====================================================
@@ -78,6 +102,8 @@ var putUserInUsersTable = function(email, password,
 //====================================================
 
 var getUserFromUsersTable = function(email, password) {
+	getConnection();
+
 	var hashedPassword = SHA3(password).toString();
 	var query = "SELECT * FROM pennpolls.users WHERE " +
 		"email = ? AND password = ?";
@@ -88,6 +114,8 @@ var getUserFromUsersTable = function(email, password) {
 			console.log("it worked too!");
 		}
 	});
+
+	closeConnection();
 };
 
 //====================================================

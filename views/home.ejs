@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PennPolls</title>
+
+    <!-- Import bootstrap base -->
+    <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css">
+    <!-- Custom styles for this template -->
+    <link href="/css/base.css"
+    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/poll.css" rel="stylesheet">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+      // Function to create new Polls
+      var ajaxNewPoll = function() {
+        $.post("/newPoll", {
+
+        }, function(data) {
+          if (data.success == false) {
+
+          } else {
+            
+          }
+        });
+      };
+
+      window.onload = function() {
+        console.log("Page has been loaded!");
+      };
+    </script>
+  </head>
+
+<body>
+  <%if (message != null) { %>
+  <font color="red"><%= message %></font>
+  <% } %>
+
+  <div id="newPoll">
+    <form onSubmit="ajaxNewPoll(); return false">
+      <h1>Create a new Poll Here: </h1>
+      Enter the poll quesiton here: <input type="text" name="newPollQuestion"><br>
+      Enter a description of the Poll or any related information here: <input type="text" name="newPollDescription"><br>
+      Enter a Comma Seperated List of Sets to which this Poll will belong: <input type="text" name="newPollSets"><br>
+      <input type="submit" value="Create Poll!">
+    </form>
+  </div>
+
+  <h1>Welcome to PennPolls!</h1>
+
+</body>
+
+<footer>
+</footer>
+</html>
