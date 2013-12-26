@@ -107,11 +107,40 @@ var getUserFromUsersTable = function(email, password) {
 	var hashedPassword = SHA3(password).toString();
 	var query = "SELECT * FROM pennpolls.users WHERE " +
 		"email = ? AND password = ?";
-	var inserts = [email, hashedPassword];
+	var inserts = {
+		email: email, 
+		hashedPassword: hashedPassword
+	};
 	connection.query(query, inserts, function(err, result) {
 		if (err) console.log("Error retrieving User from users table: " + err);
 		else {
 			console.log("it worked too!");
+		}
+	});
+
+	closeConnection();
+};
+
+var getCheckLogin = function(email, password, route_callback) {
+	getConnection();
+
+	var hashedPassword = SHA3(password).toString();
+	console.log("in getchecklogin the hashedPassword is: " +hashedPassword);
+	var query = "SELECT * FROM users WHERE " +
+		"email=? AND password=?";
+	var inserts = [email,hashedPassword];
+	
+	connection.query(query, inserts, function(err, results) {
+		if (err) {
+			route_callback(err, null);
+			console.log("Error retrieving User from users table: " + err);
+		}
+		else {
+			if (results.length > 1) {
+				console.log("the result set in getchecklogin was greater than 1");
+			} else {
+				console.log(JSON.stringify(results));
+			}
 		}
 	});
 
@@ -124,6 +153,7 @@ var getUserFromUsersTable = function(email, password) {
 
 var database = {
 	putUserInUsersTable: putUserInUsersTable,
-	getUserFromUsersTable: getUserFromUsersTable
+	getUserFromUsersTable: getUserFromUsersTable,
+	getCheckLogin: getCheckLogin
 };
 module.exports = database;
