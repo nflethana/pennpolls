@@ -28,15 +28,15 @@ var postCreateAccount = function(req, res) {
 	var phonenumber = req.body.phonenumber;
 
 	// log that data biatch!
-	console.log("find me in postCreateAccount");
-	console.log(JSON.stringify(email));
-	console.log(JSON.stringify(password));
-	console.log(JSON.stringify(firstname));
-	console.log(JSON.stringify(lastname));
-	console.log(JSON.stringify(gradyear));
-	console.log(JSON.stringify(schools));
-	console.log(JSON.stringify(pennkey));
-	console.log(JSON.stringify(phonenumber));
+	// console.log("find me in postCreateAccount");
+	// console.log(JSON.stringify(email));
+	// console.log(JSON.stringify(password));
+	// console.log(JSON.stringify(firstname));
+	// console.log(JSON.stringify(lastname));
+	// console.log(JSON.stringify(gradyear));
+	// console.log(JSON.stringify(schools));
+	// console.log(JSON.stringify(pennkey));
+	// console.log(JSON.stringify(phonenumber));
 
 	// Make sure all of the data is in the correct format
 	// Still need to check the email
@@ -87,18 +87,18 @@ var getCheckLogin = function(req, res) {
 			res.redirect('/');
 		} else {
 			var userData = {};
-			console.log("find me in getCheckLogin");
+			// console.log("find me in getCheckLogin");
 			// console.log(JSON.stringify(data));
-			console.log(JSON.stringify(data.email));
-			console.log(JSON.stringify(data.password));
-			console.log(JSON.stringify(data.id));
-			console.log(JSON.stringify(data.schools));
-			console.log(JSON.stringify(data.gradyear));
-			console.log(JSON.stringify(data.firstname));
-			console.log(JSON.stringify(data.lastname));
-			console.log(JSON.stringify(data.phonenumber));
-			console.log(JSON.stringify(data.pennkey));
-			console.log(JSON.stringify(data.datecreated));
+			// console.log(JSON.stringify(data.email));
+			// console.log(JSON.stringify(data.password));
+			// console.log(JSON.stringify(data.id));
+			// console.log(JSON.stringify(data.schools));
+			// console.log(JSON.stringify(data.gradyear));
+			// console.log(JSON.stringify(data.firstname));
+			// console.log(JSON.stringify(data.lastname));
+			// console.log(JSON.stringify(data.phonenumber));
+			// console.log(JSON.stringify(data.pennkey));
+			// console.log(JSON.stringify(data.datecreated));
 
 			req.session.email = data.email;
 			req.session.password = data.password;

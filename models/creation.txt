@@ -1,0 +1,29 @@
+CREATE TABLE polls (
+
+id INT NOT NULL AUTO_INCREMENT PRIMARY_KEY,
+poll VARCHAR(2000) NOT NULL,
+description TEXT,
+datecreated VARCHAR(1000) NOT NULL,
+dataMined BIGINT NOT NULL
+
+);
+
+CREATE TABLE polls_responses_rltn (
+poll_id INT NOT NULL,
+response_id INT NOT NULL
+);
+
+CREATE TABLE users_polls_rltn (
+user_id INT NOT NULL,
+poll_id INT NOT NULL
+);
+
+CREATE TABLE votes (
+
+user_id INT NOT NULL,
+poll_id INT NOT NULL,
+response_id INT NOT NULL,
+datevoted INT NOT NULL,
+anonymous BOOLEAN NOT NULL
+
+);
