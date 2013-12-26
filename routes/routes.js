@@ -112,7 +112,20 @@ var getUserHomePage = function(req, res) {
 	console.log("in getHomePage");
 
 	if (isSignedIn(req, res)) {
-		res.render('home.ejs', {message: null, userData: req.session.userData});
+		
+		// need seperate stuff for if you are visiting your page or another's
+		if (req.session.userData && req.session.userData.id == req.param('userid')) {
+			// this is for when you are visiting your own page
+			res.render('home.ejs', {message: req.session.msg, userData: req.session.userData});
+			req.session.msg = null;
+		} else if (req.session.userData) {
+			console.log("in getUserHomePage you are visiting someone else's page");
+			req.session.msg = "You cannot visit anyone else's page";
+			res.redirect('/home/'+req.session.userData.id);
+		} else {
+			req.session.msg = "You must sign in first before viewing any pages";
+			res.redirect('/');
+		}
 	} else {
 		req.session.msg = "You must sign in first!";
 		res.redirect('/');
