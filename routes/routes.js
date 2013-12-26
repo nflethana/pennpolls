@@ -88,22 +88,27 @@ var getCheckLogin = function(req, res) {
 		} else {
 			var userData = {};
 			console.log("find me in getCheckLogin");
-			console.log(JSON.stringify(data));
-			// console.log(JSON.stringify(data.email));
-			// console.log(JSON.stringify(data.password));
-			// console.log(JSON.stringify(data.id));
-			// console.log(JSON.stringify(data.schools));
-			// console.log(JSON.stringify(data.gradyear));
-			// console.log(JSON.stringify(data.firstname));
-			// console.log(JSON.stringify(data.lastname));
-			// console.log(JSON.stringify(data.phonenumber));
-			// console.log(JSON.stringify(data.pennkey));
-			// console.log(JSON.stringify(data.datecreated));
+			// console.log(JSON.stringify(data));
+			console.log(JSON.stringify(data.email));
+			console.log(JSON.stringify(data.password));
+			console.log(JSON.stringify(data.id));
+			console.log(JSON.stringify(data.schools));
+			console.log(JSON.stringify(data.gradyear));
+			console.log(JSON.stringify(data.firstname));
+			console.log(JSON.stringify(data.lastname));
+			console.log(JSON.stringify(data.phonenumber));
+			console.log(JSON.stringify(data.pennkey));
+			console.log(JSON.stringify(data.datecreated));
+
+			req.session.email = data.email;
+			req.session.password = data.password;
+			req.session.userData = data;
+			res.redirect('/home/'+data.id);
 		}
 	});
 };
 
-var getHomePage = function(req, res) {
+var getUserHomePage = function(req, res) {
 	console.log("in getHomePage");
 
 	if (isSignedIn(req, res)) {
@@ -112,6 +117,16 @@ var getHomePage = function(req, res) {
 		req.session.msg = "You must sign in first!";
 		res.redirect('/');
 	}
+};
+
+var getLogout = function(req, res) {
+	// delete the user's session data and redirect 
+	// to front page
+	req.session.userData = null;
+	req.session.email = null;
+	req.session.password = null;
+	req.session.msg = "You have been logged out.";
+	res.redirect('/');
 };
 
 //====================================================
@@ -142,8 +157,9 @@ var isSignedIn = function(req, res) {
 var routes = {
 	getPennPolls: getPennPolls,
 	postCreateAccount: postCreateAccount,
-	getHomePage: getHomePage,
+	getUserHomePage: getUserHomePage,
 	postNewPoll: postNewPoll,
-	getCheckLogin: getCheckLogin
+	getCheckLogin: getCheckLogin,
+	getLogout: getLogout
 };
 module.exports = routes;

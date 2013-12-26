@@ -136,10 +136,10 @@ var getCheckLogin = function(email, password, route_callback) {
 			console.log("Error retrieving User from users table: " + err);
 		}
 		else {
-			if (results.length > 1) {
-				console.log("the result set in getchecklogin was greater than 1");
+			if (results == undefined || results.length > 1) {
+				console.log("the result set in getchecklogin was greater than 1 or undefined");
 			} else {
-				console.log(JSON.stringify(results));
+				route_callback(null, results[0]);
 			}
 		}
 	});

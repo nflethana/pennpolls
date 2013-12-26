@@ -30,7 +30,7 @@ app.set('port', process.env.PORT || 8080);
 
 app.get('/', routes.getPennPolls);
 app.post('/createaccount', routes.postCreateAccount);
-app.get('/home/:id', routes.getHomePage);
+app.get('/home/:id', routes.getUserHomePage);
 app.post('/newPoll', routes.postNewPoll);
 app.get('/checklogin', routes.getCheckLogin);
 
