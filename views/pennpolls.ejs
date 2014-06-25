@@ -36,7 +36,7 @@
     Enter Your Pennkey Here: <input type="text" name="pennkey"><br>
     Enter Password Here: <input type="password" name = "createAccountPassword"><br>
     Enter Graduation Year Here (YYYY): <input type="text" name="gradyear"><br>
-    Enter Phone Number Here XXX-XXX-XXXX: <input type="text" name="phonenumber"><br>
+<!--     Enter Phone Number Here XXX-XXX-XXXX: <input type="text" name="phonenumber"><br> -->
     <p>Choose the schools to which you belong at the University of Pennsylvania:</p>
     <input type="checkbox" name="schools" value="engineering">Engineering<br>
     <input type="checkbox" name="schools" value="college">The College<br>
@@ -52,6 +52,8 @@
     <input type="submit" value="Log In">
   </form>
 
+  <h1>Sign Up Through Venmo Below<h1>
+    <a href="https://api.venmo.com/v1/oauth/authorize?client_id=1785&scope=make_payments%20access_profile%20access_email%20access_phone%20access_balance%20access_friends&response_type=code&redirect_uri=http://localhost:8080/venmoRedirect">Click Here!<a>
 </body>
 
 <footer>

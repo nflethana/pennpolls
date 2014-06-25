@@ -30,9 +30,11 @@ app.set('port', process.env.PORT || 8080);
 
 app.get('/', routes.getPennPolls);
 app.post('/createaccount', routes.postCreateAccount);
-app.get('/home/:userid', routes.getUserHomePage);
+app.get('/home/:useremail', routes.getUserHomePage);
 app.post('/newPoll', routes.postNewPoll);
 app.get('/checklogin', routes.getCheckLogin);
+app.get('/authenticateduserpage', routes.getAuthenticatedUserPage);
+app.get('/venmoRedirect', routes.getVenmoRedirect);
 
 // Examples from old code...
 // app.get('/', routes.get_login);

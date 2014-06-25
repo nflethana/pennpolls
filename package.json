@@ -1,7 +1,7 @@
 {
-   "name": "PennPolls",
+   "name": "pennpolls",
    "repository": "github.com/nflethana/pennpolls",
-   "description": "Polling website",
+   "description": "trial",
    "version": "0.0.1",
    "scripts": {
      "start": "node app.js"
@@ -13,6 +13,11 @@
       "async": "*",
       "crypto-js": "*",
       "node-uuid": "*",
-      "mysql": "*"
+      "mongodb": "*",
+      "venmo": "*",
+      "request": "*",
+      "tracer": "*",
+      "nodemon": "*",
+      "request": "*"
    }
 }
